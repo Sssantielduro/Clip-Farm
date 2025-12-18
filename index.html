@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Viral Clip Maker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="header-space"></div>
+        <div class="logo-wrapper">
+          <div class="logo">Clip Farm</div>
+          <p class="logo-tagline">AI Viral Studio</p>
+        </div>
+        <div class="header-actions">
+          <button class="profile-icon" aria-label="Open profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-section">
+            <p class="sidebar-label"><a href="projects.html">Projects</a></p>
+            <ul class="project-list">
+              <!-- Project list hidden until real data is available -->
+            </ul>
+          </div>
+          <div class="sidebar-footer">
+            <p>Logged in as <strong>Santi</strong></p>
+            <small>Preferences · Notifications · Support</small>
+          </div>
+        </aside>
+        <div class="sidebar-resize-handle" id="sidebarHandle" aria-hidden="true"></div>
+        <section class="content">
+          <div class="screen screen-main" data-screen="main">
+          <section id="phases" class="dropzone">
+            <div class="dropzone-header">
+              <div>
+                <h2>Start a Project</h2>
+                <p>Drag in any long-form video and let the AI reveal the viral highlights automatically.</p>
+              </div>
+              <span class="dropzone-badge">Running analysis · 3 clips queued</span>
+            </div>
+            <div class="dropzone-area">
+              <div class="dropzone-icon">⚡</div>
+              <p class="dropzone-title">Drag &amp; drop or click to browse</p>
+               <div class="dropzone-action-row">
+                 <button class="ghost" id="browseButton" type="button">Browse files</button>
+                 <input type="file" id="clipInput" accept="video/*" hidden />
+               </div>
+              <div class="dropzone-file-info" id="dropzoneFileInfo" aria-live="polite"></div>
+            </div>
+            <div class="dropzone-hint">
+              <span>Supported formats:</span>
+              <small>MP4 · MOV · MKV · Cloud links</small>
+            </div>
+          </section>
+
+            <section class="hero">
+              <div>
+                <p class="eyebrow">AI-powered short-form studio</p>
+                <h1>
+                  Turn every long-form stream or recording into <span>viral</span> short clips
+                </h1>
+                <p>
+                  Drop a video, and Clip Farm's multilayer AI highlights the most addictive
+                  moments, auto-edits them, and prepares custom exports for every social
+                  platform.
+                </p>
+                <div class="hero-actions">
+                  <button class="ghost">See trending highlights</button>
+                </div>
+              </div>
+              <div class="hero-panel">
+                <p>Processing</p>
+                <span>Analyzing trends & hooks</span>
+                <div class="progress">
+                  <span style="width: 78%"></span>
+                </div>
+                <div class="hero-stats">
+                  <div>
+                    <p>Virality score</p>
+                    <strong>92</strong>
+                  </div>
+                  <div>
+                    <p>Hook quality</p>
+                    <strong>High</strong>
+                  </div>
+                  <div>
+                    <p>Suggested format</p>
+                    <strong>9:16 Reels</strong>
+                  </div>
+                </div>
+              </div>
+            </section>
+          <section id="editing" class="editing">
+          <div class="editing-cards">
+            <article>
+              <h3>AI interface clip editor</h3>
+              <p>
+                Prompt the AI to remix hooks, textures, and pacing with a conversational interface.
+                It auto-applies cuts, zooms, and captions while you coach it with notes.
+              </p>
+              <ul>
+                <li>Describe the vibe and let the editor propose cut sequences</li>
+                <li>Swap voices, captions, and effects mid-session</li>
+                <li>Preview frames plus metadata before applying changes</li>
+              </ul>
+            </article>
+            <article>
+              <h3>AI Training</h3>
+              <p>
+                Train the assistant on cadence, captions, and vibe so every edit feels more you.
+                History, feedback, and scoring stay attached to the clip automatically.
+              </p>
+              <ul>
+                <li>Tag clips with campaigns, hooks, and export requirements</li>
+                <li>Surface retention forecasts and engagement tips</li>
+                <li>Share clip links with collaborators instantly</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Scheduler</h3>
+              <p>
+                Queue clips for publishing, drop them into calendars, and let reminders prod the team.
+                Schedules stay synced with the assistant for on-the-fly adjustments.
+              </p>
+              <ul>
+                <li>Drag-and-drop clips into day/week/month layouts</li>
+                <li>Auto-post windows that match each platform’s peak times</li>
+                <li>Status badges show what needs approvals or last-second edits</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+          <section id="publishing" class="publishing">
+          <header>
+            <h2>Multi-platform publishing</h2>
+            <p>Drop in the clip and release it wherever your audience hangs out.</p>
+          </header>
+          <div class="publish-platforms">
+            <article class="platform-card" data-platform="tiktok">
+              <span class="platform-icon">Tik</span>
+              <div>
+                <strong>TikTok</strong>
+                <small>Instant reels & auto-edit delivery</small>
+              </div>
+            </article>
+            <article class="platform-card" data-platform="instagram">
+              <span class="platform-icon">IG</span>
+              <div>
+                <strong>Instagram</strong>
+                <small>Reels · Feed · Stories exports</small>
+              </div>
+            </article>
+            <article class="platform-card" data-platform="youtube">
+              <span class="platform-icon">YT</span>
+              <div>
+                <strong>YouTube</strong>
+                <small>Shorts + regular uploads</small>
+              </div>
+            </article>
+            <article class="platform-card" data-platform="facebook">
+              <span class="platform-icon">FB</span>
+              <div>
+                <strong>Facebook</strong>
+                <small>Reels + watch clips</small>
+              </div>
+            </article>
+            <article class="platform-card" data-platform="snap">
+              <span class="platform-icon">SC</span>
+              <div>
+                <strong>Snapchat</strong>
+                <small>Quick share + spotlight-ready clips</small>
+              </div>
+            </article>
+          </div>
+          <div class="publish-actions">
+            <button class="primary">Upload now</button>
+            <button class="ghost">Schedule sequence</button>
+            <button class="ghost">Download bundle</button>
+          </div>
+        </section>
+
+          <!-- Analytics & personalization section removed per request -->
+          </div>
+          <div class="screen screen-preview hidden" data-screen="preview">
+            <header class="preview-header">
+              <div>
+                <h2 id="previewTitle">Clip preview</h2>
+              </div>
+            </header>
+            <div class="preview-stage">
+              <video id="previewVideo" class="preview-video" controls playsinline></video>
+              <div class="preview-meta">
+                <p>Let the AI judge the clip before sending it through Auto-Edit.</p>
+                <div class="preview-meta-stats">
+                  <span id="previewSize">Size · 0 B</span>
+                  <span id="previewType">Type · video/*</span>
+                </div>
+                <div class="preview-meta-actions">
+                  <button class="ghost preview-action" type="button">
+                    Change
+                    <span aria-hidden="true" class="preview-action-icon">♻</span>
+                  </button>
+                  <button class="ghost preview-action farm-action" type="button">
+                    Farm
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>© 2025 Clip Farm · Built for creators who want to make hella bread.</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
