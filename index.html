@@ -9,6 +9,7 @@
   <body>
     <div class="app-shell">
       <header class="site-header">
+        <button class="drawer-toggle" aria-label="Open menu">☰</button>
         <div class="header-space"></div>
         <div class="logo-wrapper">
           <div class="logo">Clip Farm</div>
@@ -23,20 +24,28 @@
         </div>
       </header>
 
+      <!-- Drawer (slide-out contents panel) -->
+      <div class="drawer" role="dialog" aria-modal="true" aria-hidden="true" id="drawer">
+        <div class="drawer-header">
+          <a href="./index.html" class="logo" aria-label="Home">ClipFarm</a>
+        </div>
+        <nav class="drawer-nav">
+          <ul>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#editing">Style Trainer</a></li>
+            <li><a href="#scheduler">Scheduler</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </nav>
+        <div class="drawer-footer">
+          <button id="logoutBtn" class="logout">Log out</button>
+        </div>
+      </div>
+      <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
       <main class="layout">
-        <aside class="sidebar" id="sidebar">
-          <div class="sidebar-section">
-            <p class="sidebar-label"><a href="projects.html">Projects</a></p>
-            <ul class="project-list">
-              <!-- Project list hidden until real data is available -->
-            </ul>
-          </div>
-          <div class="sidebar-footer">
-            <p>Logged in as <strong>Santi</strong></p>
-            <small>Preferences · Notifications · Support</small>
-          </div>
-        </aside>
-        <div class="sidebar-resize-handle" id="sidebarHandle" aria-hidden="true"></div>
+        <!-- Sidebar removed per request -->
         <section class="content">
           <div class="screen screen-main" data-screen="main">
           <section id="phases" class="dropzone">
@@ -114,7 +123,7 @@
               </ul>
             </article>
             <article>
-              <h3>AI Training</h3>
+              <h3>Style Trainer</h3>
               <p>
                 Train the assistant on cadence, captions, and vibe so every edit feels more you.
                 History, feedback, and scoring stay attached to the clip automatically.
@@ -188,6 +197,8 @@
             <button class="ghost">Download bundle</button>
           </div>
         </section>
+
+        <!-- Scheduler and Analytics sections removed from main page per request -->
 
           <!-- Analytics & personalization section removed per request -->
           </div>

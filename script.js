@@ -17,46 +17,7 @@ setInterval(() => {
   }
 }, 4000);
 
-const sidebar = document.getElementById('sidebar');
-const sidebarHandle = document.getElementById('sidebarHandle');
-let isDragging = false;
-
-if (sidebar && sidebarHandle) {
-  const updateWidth = (clientX) => {
-    const layoutRect = sidebar.parentElement.getBoundingClientRect();
-    const rootStyles = getComputedStyle(document.documentElement);
-    const minWidth = parseInt(rootStyles.getPropertyValue('--sidebar-min-width'), 10);
-    const maxWidth = parseInt(rootStyles.getPropertyValue('--sidebar-max-width'), 10);
-    let newWidth = clientX - layoutRect.left;
-    newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
-    sidebar.style.width = `${newWidth}px`;
-  };
-
-  sidebarHandle.addEventListener('pointerdown', (event) => {
-    isDragging = true;
-    document.body.style.cursor = 'col-resize';
-    sidebarHandle.setPointerCapture(event.pointerId);
-    updateWidth(event.clientX);
-    event.preventDefault();
-  });
-
-  document.addEventListener('pointermove', (event) => {
-    if (!isDragging) return;
-    updateWidth(event.clientX);
-  });
-
-  const stopDrag = (event) => {
-    if (!isDragging) return;
-    isDragging = false;
-    document.body.style.cursor = 'auto';
-    if (event && event.pointerId && sidebarHandle.hasPointerCapture?.(event.pointerId)) {
-      sidebarHandle.releasePointerCapture(event.pointerId);
-    }
-  };
-
-  document.addEventListener('pointerup', stopDrag);
-  document.addEventListener('pointercancel', stopDrag);
-}
+/* Sidebar DOM and resize logic removed */
 
   const dropzoneArea = document.querySelector('.dropzone-area');
   const dropzoneInfo = document.getElementById('dropzoneFileInfo');
@@ -74,6 +35,19 @@ if (sidebar && sidebarHandle) {
   const previewSize = document.getElementById('previewSize');
   const previewType = document.getElementById('previewType');
   let currentPreviewUrl = null;
+
+  const toggleDrawer = (open) => {
+    const drawerEl = document.getElementById('drawer');
+    const backdropEl = document.getElementById('drawerBackdrop');
+    document.body.classList.toggle('drawer-open', open);
+    if (drawerEl) drawerEl.setAttribute('aria-hidden', String(!open));
+    if (backdropEl) backdropEl.setAttribute('aria-hidden', String(!open));
+    if (open) {
+      const closeBtn = drawerEl?.querySelector('.drawer-close');
+      closeBtn?.focus();
+    }
+  };
+  const profileIcon = document.querySelector('.profile-icon');
 
   const formatBytes = (bytes) => {
     if (!bytes) return '0 B';
@@ -128,10 +102,6 @@ if (sidebar && sidebarHandle) {
       previewVideo.removeAttribute('src');
     }
     if (currentPreviewUrl) {
-
-  const toggleDrawer = (open) => {
-    document.body.classList.toggle('drawer-open', open);
-  };
       URL.revokeObjectURL(currentPreviewUrl);
       currentPreviewUrl = null;
     }
@@ -195,6 +165,10 @@ if (sidebar && sidebarHandle) {
     drawerToggle.addEventListener('click', () => toggleDrawer(true));
   }
 
+  if (profileIcon) {
+    profileIcon.addEventListener('click', () => toggleDrawer(true));
+  }
+
   if (drawerClose) {
     drawerClose.addEventListener('click', () => toggleDrawer(false));
   }
@@ -202,3 +176,20 @@ if (sidebar && sidebarHandle) {
   if (drawerBackdrop) {
     drawerBackdrop.addEventListener('click', () => toggleDrawer(false));
   }
+
+  // logout handler
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      // clear app-specific storage and reload to home
+      try {
+        localStorage.clear();
+        sessionStorage.clear();
+      } catch (e) {}
+      // close drawer then reload
+      toggleDrawer(false);
+      setTimeout(() => { window.location.href = './index.html'; }, 160);
+    });
+  }
+
+  // Scheduler logic removed (section removed from main page)
