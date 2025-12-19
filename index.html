@@ -29,9 +29,12 @@
         <div class="drawer-header">
           <a href="./index.html" class="logo" aria-label="Home">ClipFarm</a>
         </div>
+        <button class="drawer-close" type="button" aria-label="Close menu">×</button>
         <nav class="drawer-nav">
           <ul>
+            <li><a href="profile.html">Profile</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="assets.html">Assets</a></li>
             <li><a href="#editing">Style Trainer</a></li>
             <li><a href="#scheduler">Scheduler</a></li>
             <li><a href="#analytics">Analytics</a></li>
@@ -215,6 +218,17 @@
                 <div class="preview-meta-stats">
                   <span id="previewSize">Size · 0 B</span>
                   <span id="previewType">Type · video/*</span>
+                </div>
+                <div class="preview-editing-style">
+                  <div class="preview-editing-header">
+                    <p>Editing style</p>
+                    <small>Set a tone before sending to Auto-Edit.</small>
+                  </div>
+                  <div class="style-options" role="group" aria-label="Editing style options">
+                    <button type="button" class="style-chip active">Punchy Cuts</button>
+                    <button type="button" class="style-chip">Smooth Story</button>
+                    <button type="button" class="style-chip">Bold Text</button>
+                  </div>
                 </div>
                 <div class="preview-meta-actions">
                   <button class="ghost preview-action" type="button">

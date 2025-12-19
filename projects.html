@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects · Clip Farm</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <button class="drawer-toggle" aria-label="Open menu">☰</button>
+        <div class="header-space"></div>
+        <div class="logo-wrapper">
+          <div class="logo">Clip Farm</div>
+          <p class="logo-tagline">AI Viral Studio</p>
+        </div>
+        <div class="header-actions">
+          <button class="profile-icon" aria-label="Open profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="drawer" role="dialog" aria-modal="true" aria-hidden="true" id="drawer">
+        <div class="drawer-header">
+          <a href="./index.html" class="logo" aria-label="Home">ClipFarm</a>
+        </div>
+        <button class="drawer-close" type="button" aria-label="Close menu">×</button>
+        <nav class="drawer-nav">
+          <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="assets.html">Assets</a></li>
+            <li><a href="index.html#editing">Style Trainer</a></li>
+            <li><a href="index.html#scheduler">Scheduler</a></li>
+            <li><a href="index.html#analytics">Analytics</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </nav>
+        <div class="drawer-footer">
+          <button id="logoutBtn" class="logout">Log out</button>
+        </div>
+      </div>
+      <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+      <main class="layout">
+        <section class="content projects-page">
+          <header class="projects-header">
+            <div>
+              <p class="eyebrow">Projects</p>
+              <h1>Queue, cluster, and ship viral clips</h1>
+              <p>Every studio needs one runway for fresh ideas, engines, and the folders that keep them tidy.</p>
+            </div>
+            <div class="projects-header-actions">
+              <button class="ghost">Import timeline</button>
+              <button class="primary">Start a launch</button>
+            </div>
+          </header>
+
+          <div class="queue-panel queue-panel-skinny">
+            <div>
+              <p class="eyebrow">Queue status</p>
+              <h3>Queue overview</h3>
+              <p>Cross-platform edits are lining up. Triage drafts below and push the winners forward.</p>
+            </div>
+            <div class="queue-stats">
+              <div>
+                <span>In review</span>
+                <p>Fresh clips awaiting creator feedback.</p>
+              </div>
+              <div>
+                <span>Drafts</span>
+                <p>Auto-edits stage is empty until you add footage.</p>
+              </div>
+              <div>
+                <span>Ready</span>
+                <p>Exports appear here once you approve clips.</p>
+              </div>
+            </div>
+          </div>
+
+          <section class="project-finder">
+            <header>
+              <div>
+                <h2>Project finder</h2>
+                <p>Scroll through everything, see what you touched most recently, and keep favorites close.</p>
+              </div>
+              <button class="ghost">Filter by platform</button>
+            </header>
+            <div class="finder-grid">
+              <article>
+                <h3>All projects</h3>
+                <ul class="project-list" id="allProjectsList" aria-label="All projects">
+                  <li class="project-empty" id="allPlaceholder" data-clips="0">
+                    <div>
+                      <strong>No projects added yet</strong>
+                      <small>Start by importing clips or creating a new card.</small>
+                    </div>
+                    <span class="project-status">Empty</span>
+                  </li>
+                </ul>
+              </article>
+              <article>
+                <h3>Recent projects</h3>
+                <ul class="project-list" id="recentProjects" aria-label="Recent projects"></ul>
+                <p id="recentPlaceholder" class="finder-empty">No recent activity yet · create a project to populate this list.</p>
+              </article>
+              <article>
+                <h3>Favorite projects</h3>
+                <ul class="project-list" id="favoriteProjectsList" aria-label="Favorite projects">
+                  <li class="project-empty" id="favoritesPlaceholder" data-clips="0">
+                    <div>
+                      <strong>Favorites will appear here</strong>
+                      <small>Star a project to keep it within reach.</small>
+                    </div>
+                    <span class="project-status">Starless</span>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="new-project-screen">
+            <header>
+              <h2>New project</h2>
+              <p>Spin up a quick card, drop some thoughts, and let the system queue the auto-edit for your next drop.</p>
+            </header>
+            <form id="newProjectForm">
+              <label>
+                Project name
+                <input id="newProjectName" name="projectName" type="text" placeholder="Name your drop" required />
+              </label>
+              <label>
+                Goal or prompt
+                <input id="newProjectGoal" name="projectGoal" type="text" placeholder="Describe the vibe" />
+              </label>
+              <div class="new-project-actions">
+                <button class="ghost" type="reset">Reset</button>
+                <button class="primary" type="submit">Create project</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="environments-section">
+            <header>
+              <div>
+                <h2>Environment finder</h2>
+                <p>Group projects into folders, teams, or campaigns so you can switch context instantly.</p>
+              </div>
+            </header>
+            <form id="envFinderForm" class="env-form">
+              <input id="envNameInput" type="text" placeholder="Add environment name" required />
+              <button class="ghost" type="submit">Create group</button>
+            </form>
+            <div class="env-list" id="envList" aria-live="polite">
+              <p class="finder-empty">No environments created yet.</p>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <footer>
+        <p>© 2025 Clip Farm · Built for creators who want to make hella bread.</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
